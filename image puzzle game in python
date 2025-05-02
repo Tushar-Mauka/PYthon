@@ -1,0 +1,64 @@
+# Configuration
+GRID_SIZE = 3  # 3x3 puzzle
+IMAGE_PATH = input("Enter the path to your image: ")
+
+# Load and process image
+def load_and_split_image(path, grid_size):
+    img = Image.open(path).resize((300, 300))
+    img_np = np.array(img)
+    h, w, _ = img_np.shape
+    tile_h, tile_w = h // grid_size, w // grid_size
+    tiles = []
+
+    for i in range(grid_size):
+        for j in range(grid_size):
+            tile = img_np[i*tile_h:(i+1)*tile_h, j*tile_w:(j+1)*tile_w]
+            tiles.append(tile)
+
+    return tiles, tile_h, tile_w
+
+# Display puzzle
+def display_puzzle(tiles, grid_size, title='Puzzle'):
+    fig, axarr = plt.subplots(grid_size, grid_size)
+    idx = 0
+    for i in range(grid_size):
+        for j in range(grid_size):
+            axarr[i, j].imshow(tiles[idx])
+            axarr[i, j].axis('off')
+            axarr[i, j].set_title(str(idx))
+            idx += 1
+    plt.suptitle(title)
+    plt.tight_layout()
+    plt.show()
+
+# Swap tiles
+def swap_tiles(tiles, i, j):
+    tiles[i], tiles[j] = tiles[j], tiles[i]
+
+# Check if puzzle is solved
+def is_solved(current, original):
+    return all(np.array_equal(c, o) for c, o in zip(current, original))
+
+# Main game loop
+def play_puzzle(image_path, grid_size):
+    original_tiles, tile_h, tile_w = load_and_split_image(image_path, grid_size)
+    shuffled_tiles = original_tiles.copy()
+    random.shuffle(shuffled_tiles)
+
+    move_count = 0
+
+    while True:
+        display_puzzle(shuffled_tiles, grid_size, title=f'Move #{move_count}')
+        if is_solved(shuffled_tiles, original_tiles):
+            print("🎉 Puzzle solved!")
+            break
+        try:
+            i = int(input("Enter first tile index to swap: "))
+            j = int(input("Enter second tile index to swap: "))
+            if i < 0 or j < 0 or i >= grid_size**2 or j >= grid_size**2:
+                print("Invalid indices. Try again.")
+                continue
+            swap_tiles(shuffled_tiles, i, j)
+            move_count += 1
+        except ValueError:
+            print("Please enter valid numbers.")
