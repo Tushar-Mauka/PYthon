@@ -1,0 +1,27 @@
+import pandas as pd
+
+df = pd.DataFrame({
+    "S.NO": list(range(1, 31)),
+    "FIRST_NAME": ["TUSHAR", "TEJU", "VAISOOLI", "POOYA", "POOOONIIT", "angu", "pang", "kali", "sumay", "POo",
+                   "s11", "s12", "s13", "s14", "s15", "s16", "s17", "s18", "s19", "s20",
+                   "s21", "s22", "s23", "s24", "s25", "s26", "s27", "s28", "s29", "s30"],
+    "SURNAME": ["SHARMA"] * 30,
+    "CLASS": ["c3"] * 30,
+    "Section": ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J",
+                "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T",
+                "U", "V", "W", "X", "Y", "Z", "I", "J", "K", "L"],
+    "year": ["2023", "2023", "2023", "2025", "2025", "2025", "2025", "2005", "2025", "2025",
+             "2023", "2023", "2023", "2025", "2025", "2025", "2025", "2005", "2025", "2025",
+             "2023", "2023", "2023", "2025", "2025", "2025", "2025", "2005", "2025", "2025"],
+    "CITY": ["MUMBAI", "JAPAN", "BHATINDA", "PUNJAB", "RUSSIA",
+             "MUMBAI", "JAPAN", "BHATINDA", "PUNJAB", "RUSSIA",
+             "MUMBAI", "JAPAN", "BHATINDA", "PUNJAB", "RUSSIA",
+             "MUMBAI", "JAPAN", "BHATINDA", "PUNJAB", "RUSSIA",
+             "MUMBAI", "JAPAN", "BHATINDA", "PUNJAB", "RUSSIA",
+             "MUMBAI", "JAPAN", "BHATINDA", "PUNJAB", "RUSSIA"],
+    "Age": [20, 21, 20, 21, 20, 21, 20, 21, 20, 21,
+            20, 21, 20, 21, 20, 21, 20, 21, 20, 21,
+            20, 21, 20, 21, 20, 21, 20, 21, 20, 21]
+})
+
+print(df)
