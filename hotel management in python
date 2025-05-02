@@ -1,0 +1,32 @@
+print("MENU")
+print("Select any item from the menu")
+print("1. Pizza : 100rs")
+print("2. Burger : 50rs")
+print("3. Sandwich : 30rs")
+print("4. Cold drink : 40rs")
+print("5. Ice cream : 20rs")
+print("6. Exit")
+print("7. Show bill")
+b=0
+c=0
+while 1>0:
+    a=int(input("Enter your choice: "))
+    if a==1:
+        b=100
+    elif a==2:
+        b=50
+    elif a==3:
+        b=30    
+    elif a==4:
+        b=40
+    elif a==5:
+        b=20 
+    elif a==6:
+        break
+    elif a==7:
+        print("total bill =",c)          
+    else:
+        print("please enter a valid input")
+        continue
+    c=c+b
+    b=0
