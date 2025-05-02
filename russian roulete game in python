@@ -1,0 +1,13 @@
+import random
+print(random.randint(1,10))
+b=random.randint(1,10)
+while True:
+    a=int(input("Enter the number "))
+    if b== a:
+        print("You loose")
+        break
+    elif a<0 or a>10:
+        print("Invalid input")    
+    else:
+         print("continue")
+         continue  
